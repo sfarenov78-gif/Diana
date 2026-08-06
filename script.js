@@ -1,7 +1,3 @@
-// =========================
-// ЗАГРУЗОЧНЫЙ ЭКРАН
-// =========================
-
 window.onload=()=>{
 
 const intro=document.getElementById("introScreen");
@@ -48,9 +44,6 @@ intro.remove();
 
 }
 
-// =========================
-// ПОЯВЛЕНИЕ БЛОКОВ
-// =========================
 
 const observer = new IntersectionObserver((entries)=>{
 
@@ -68,9 +61,6 @@ entry.target.classList.add("show");
 
 document.querySelectorAll(".hidden").forEach(el=>observer.observe(el));
 
-// =========================
-// ОТКРЫТИЕ ПИСЬМА
-// =========================
 
 const envelope=document.getElementById("openLetter");
 
@@ -99,9 +89,6 @@ envelope.onclick = () => {
 
 };
 
-// =========================
-// СЧЕТЧИК
-// =========================
 
 const startDate=new Date("2025-08-18T00:00:00");
 
@@ -133,9 +120,6 @@ setInterval(updateCounter,1000);
 
 updateCounter();
 
-// =========================
-// СЕРДЦА
-// =========================
 
 const canvas=document.getElementById("heartCanvas");
 
@@ -225,9 +209,6 @@ requestAnimationFrame(animateHearts);
 
 animateHearts();
 
-// =========================
-// КНОПКА
-// =========================
 
 const loveButton=document.getElementById("loveButton");
 
@@ -248,9 +229,6 @@ hearts.push(new Heart());
 };
 }
 
-// =========================
-// КНОПКА СТАРТА
-// =========================
 
 const startButton=document.getElementById("startButton");
 
@@ -268,9 +246,6 @@ behavior:"smooth"
 
 }
 
-// =========================
-// ПОКАЗАТЬ ВСЕ ПРИЧИНЫ
-// =========================
 
 const more=document.getElementById("moreReasons");
 
@@ -297,9 +272,7 @@ more.remove();
 };
 
 }
-// =========================
-// ЗВЕЗДНОЕ НЕБО (Зрелищная версия)
-// =========================
+
 
 const starsContainer = document.querySelector(".stars");
 
@@ -314,7 +287,7 @@ for (let i = 0; i < 250; i++) {
     star.style.width = size + "px";
     star.style.height = size + "px";
     
-    // Добавляем случайный цвет и мерцание с разной скоростью
+   
     star.style.background = starColors[Math.floor(Math.random() * starColors.length)];
     star.style.animationDuration = (2 + Math.random() * 5) + "s";
     star.style.animationDelay = Math.random() * 5 + "s";
@@ -323,7 +296,7 @@ for (let i = 0; i < 250; i++) {
     starsContainer.appendChild(star);
 }
 
-// 2. Создаем эффект Падающих звезд (Метеориты)
+
 function createShootingStar() {
     const star = document.createElement("span");
     const x = Math.random() * 100;
@@ -343,18 +316,18 @@ function createShootingStar() {
     `;
     starsContainer.appendChild(star);
 
-    // Удаляем звезду после анимации
+
     setTimeout(() => {
         star.remove();
     }, 1500);
 }
 
-// Создаем метеориты каждые 2-5 секунд
+
 setInterval(() => {
     createShootingStar();
 }, 2500 + Math.random() * 3000);
 
-// Добавляем стили для метеорита (в CSS через JS, чтобы не лезть в файл)
+
 const styleSheet = document.createElement("style");
 styleSheet.textContent = `
     @keyframes shoot {
@@ -373,7 +346,7 @@ styleSheet.textContent = `
 `;
 document.head.appendChild(styleSheet);
 
-// 3. Создаем Мягкие Галактические Облака (для глубины)
+
 function createNebula() {
     const nebula = document.createElement("div");
     const size = 200 + Math.random() * 400;
@@ -395,12 +368,12 @@ function createNebula() {
     starsContainer.appendChild(nebula);
 }
 
-// Создаем 5-6 туманностей для объема
+
 for(let i=0; i<6; i++) {
     createNebula();
 }
 
-// Анимация для туманностей
+
 const nebulaStyle = document.createElement("style");
 nebulaStyle.textContent = `
     @keyframes floatNebula {
@@ -411,7 +384,7 @@ nebulaStyle.textContent = `
 document.head.appendChild(nebulaStyle);
 document.getElementById("loveButton").onclick = () => {
     
-    // 1. Делаем музыку громче
+
     const music = document.getElementById("bgMusic");
     if (music) {
         music.volume = 0.2; 
@@ -424,7 +397,7 @@ document.getElementById("loveButton").onclick = () => {
         }, 120);
     }
 
-    // 2. Создаем финальный экран
+
     const finalDiv = document.createElement("div");
     finalDiv.style.cssText = `
         position: fixed; inset: 0; z-index: 999999; 
@@ -449,7 +422,7 @@ document.getElementById("loveButton").onclick = () => {
 
     document.body.appendChild(finalDiv);
 
-    // 3. НОВАЯ ОТРИСОВКА СЕРДЦА (Более реалистичная)
+
     const canvas = document.getElementById("heartCanvasFinal");
     const ctx = canvas.getContext("2d");
     let width = window.innerWidth;
@@ -458,31 +431,29 @@ document.getElementById("loveButton").onclick = () => {
     canvas.width = width;
     canvas.height = height;
 
-    // Функция для рисования красивого сердца
+
     function drawRealisticHeart(progress, time) {
         ctx.clearRect(0, 0, width, height);
 
         const cx = width / 2;
-        const cy = height / 2 - 60; // Чуть выше центра
-        const scale = Math.min(width, height) / 310; // Адаптация под размер экрана
-        const beat = Math.sin(time * 0.002) * 0.02 + 1.0; // Легкое биение
+        const cy = height / 2 - 60; 
+        const scale = Math.min(width, height) / 310; 
+        const beat = Math.sin(time * 0.002) * 0.02 + 1.0; 
 
         ctx.save();
         ctx.translate(cx, cy);
         ctx.scale(scale * beat, scale * beat);
 
-        // Рисуем форму сердца
+
         ctx.beginPath();
         ctx.moveTo(0, -50);
         ctx.bezierCurveTo(-100, -150, -250, 50, 0, 220);
         ctx.bezierCurveTo(250, 50, 100, -150, 0, -50);
         ctx.closePath();
 
-        // ==========================================
-        // 3D ЭФФЕКТ (Градиент + Блик)
-        // ==========================================
+
         
-        // 1. Внутренний градиент для объема (свет сверху-слева, тень снизу-справа)
+
         const gradient = ctx.createRadialGradient(-50, -60, 20, 0, 50, 250);
         gradient.addColorStop(0, "#ffb3cc");  // Самый светлый центр (блик)
         gradient.addColorStop(0.3, "#ff4d88"); // Яркий неон
@@ -491,18 +462,18 @@ document.getElementById("loveButton").onclick = () => {
 
         ctx.fillStyle = gradient;
         ctx.shadowColor = "#ff1a66";
-        ctx.shadowBlur = 60; // Мощное внешнее свечение
+        ctx.shadowBlur = 60; 
         ctx.fill();
 
-        // 2. Добавляем второй слой (прозрачный контур) для сияния краев
+
         ctx.shadowBlur = 90;
         ctx.shadowColor = "#ff4d88";
         ctx.strokeStyle = "rgba(255, 100, 150, 0.5)";
         ctx.lineWidth = 5;
         ctx.stroke();
 
-        // 3. Рисуем БЛИК (самая важная часть 3D) — отражение света
-        ctx.shadowBlur = 0; // Убираем тень, чтобы не мешала блику
+
+        ctx.shadowBlur = 0; 
         ctx.shadowColor = "transparent";
         
         // Большой овальный блик сверху слева (эффект глянца)
@@ -525,7 +496,6 @@ document.getElementById("loveButton").onclick = () => {
 
         ctx.restore();
         
-        // Отрисовка маленьких блесток (эффект волшебства)
         for(let i=0; i<50; i++) {
             const angle = Math.random() * Math.PI * 2;
             const rad = 150 + Math.random() * 200;
@@ -541,7 +511,7 @@ document.getElementById("loveButton").onclick = () => {
         }
     }
 
-    // 4. Анимация с лепестками (добавим эффект падающих лепестков)
+
     const petals = [];
     for (let i = 0; i < 40; i++) {
         petals.push({
@@ -563,19 +533,15 @@ document.getElementById("loveButton").onclick = () => {
     function animateFinal() {
         const time = Date.now() - startTime;
         
-        // Медленное появление сердца
         if (heartProgress < 1) heartProgress += 0.015; 
 
-        // Рисуем само сердце
         drawRealisticHeart(heartProgress, time);
 
-        // Рисуем падающие лепестки
         petals.forEach(p => {
             p.x += p.speedX + Math.sin(time / 1000 + p.y / 100) * 0.5;
             p.y += p.speedY;
             p.rotation += p.rotSpeed;
 
-            // Если лепесток упал вниз, возвращаем его наверх
             if (p.y > height + 50) {
                 p.y = -50;
                 p.x = Math.random() * width;
@@ -601,14 +567,13 @@ document.getElementById("loveButton").onclick = () => {
     }
     animateFinal();
 
-    // 5. Плавно показываем текст через 2 секунды
     setTimeout(() => {
         const words = finalDiv.querySelector(".finalWords");
         words.style.opacity = "1";
         words.style.transform = "translateY(0)";
     }, 2000);
 }
-// Автоматический запуск музыки при первом взаимодействии с сайтом
+
 document.addEventListener('click', function() {
     let audio = document.getElementById('bgMusic');
     if (audio.paused) {
@@ -616,7 +581,7 @@ document.addEventListener('click', function() {
     }
 });
 
-// Или если хочешь, чтобы включалась при прокрутке (скролле):
+
 document.addEventListener('scroll', function() {
     let audio = document.getElementById('bgMusic');
     if (audio.paused) {
