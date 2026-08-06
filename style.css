@@ -260,13 +260,13 @@ gap:70px;
 .photos {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 20px; /* Чуть уменьшил отступ, чтобы смотрелось плотнее */
+    gap: 20px; 
     width: 100%;
     max-width: 1400px;
 }
 
 .photo {
-    /* Делаем все карточки квадратными (или поменяй на 4/3, если хочешь прямоугольные) */
+
     aspect-ratio: 1 / 1; 
     width: 100%;
     border-radius: 28px;
@@ -274,13 +274,12 @@ gap:70px;
     cursor: pointer;
     transition: .5s;
     box-shadow: 0 0 35px rgba(255,255,255,.05);
-    position: relative; /* Чтобы картинка не вылезала */
+    position: relative; 
 }
 
 .photo img {
     width: 100%;
     height: 100%;
-    /* МАГИЯ: cover заставляет фото заполнять квадрат целиком, обрезая лишнее */
     object-fit: cover; 
     display: block;
     transition: .6s;
@@ -520,13 +519,11 @@ text-align:center;
     flex-direction: column;
     position: relative;
     overflow: hidden;
-    /* ДЕЛАЕМ ФОН ДОРОГИМ: глубокий градиент с мягким розовым сиянием */
     background: radial-gradient(ellipse at 50% 50%, #1f000a 0%, #0d0003 40%, #040404 100%);
-    /* Создаем эффект мягкой дымки (приглушенные цвета для глубины) */
     box-shadow: inset 0 0 150px rgba(255, 60, 120, 0.15);
 }
 
-/* Добавляем мягкий светящийся круг за сердцем (эффект "гало") */
+
 #finalScreen::before {
     content: "";
     position: absolute;
@@ -555,7 +552,7 @@ text-align:center;
     margin-bottom: 20px;
 }
 
-/* Новая, более плавная анимация для сердца (как настоящее биение) */
+
 @keyframes pulseHeart {
     0% {
         transform: scale(1);
@@ -625,7 +622,7 @@ pointer-events:none;
 z-index:999;
 
 }
-/* ---------------- ЗВЕЗДНОЕ НЕБО ---------------- */
+
 
 #stars,
 #stars2,
@@ -737,7 +734,6 @@ transform:translateY(-30px);
 
 }
 
-/* ---------- ЗОЛОТОЕ СВЕЧЕНИЕ ---------- */
 
 h1,h2{
 
@@ -863,7 +859,6 @@ width:100%;
 
 }
 
-/* -------- СКРОЛЛ -------- */
 
 ::-webkit-scrollbar{
 
@@ -884,7 +879,7 @@ border-radius:20px;
 background:#080808;
 
 }
-/* ---------- КИНЕМАТОГРАФИЧЕСКОЕ ВСТУПЛЕНИЕ ---------- */
+
 
 #introScreen{
 
@@ -959,9 +954,6 @@ transform:none;
 }
 
 }
-/* =========================
-3D КОНВЕРТ
-========================= */
 
 .envelope{
 
@@ -1439,9 +1431,7 @@ font-size:32px;
 color:#ff5b95;
 
 }
-/* =========================
-   ЗАПРЕТ ВЫДЕЛЕНИЯ ТЕКСТА И КУРСОРА
-   ========================= */
+
 * {
     user-select: none;            /* Запрещает выделять текст */
     -webkit-user-select: none;
@@ -1450,7 +1440,7 @@ color:#ff5b95;
     cursor: default;              /* Ставим курсор-стрелочку по умолчанию */
 }
 
-/* ВОЗВРАЩАЕМ КУРСОР-РУКУ (pointer) ДЛЯ КЛИКАБЕЛЬНЫХ ЭЛЕМЕНТОВ */
+
 button,
 a,
 .envelope,
@@ -1464,3 +1454,84 @@ a,
 #openLetter {
     cursor: pointer !important;
 }
+
+@media(max-width:900px){
+
+    .hero h1 { font-size: 48px; }
+    .hero h3 { font-size: 24px; }
+    .hero p { font-size: 18px; }
+    .glass { padding: 30px; }
+    .glass h2 { font-size: 34px; }
+    .glass p { font-size: 16px; line-height: 1.8; }
+    .counter { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    .counter span { font-size: 34px; }
+    .reasonsSection h2 { font-size: 36px; }
+    .gallery2 h2 { font-size: 36px; }
+    #finalScreen h1 { font-size: 48px; }
+    #finalScreen p { font-size: 18px; }
+    #bigHeart { font-size: 120px; }
+    #introText { font-size: 38px; }
+    #introSub { font-size: 22px; }
+    button { width: 100%; max-width: 300px; display: block; margin: 0 auto; }
+    
+
+    .envelope { width: 100%; max-width: 400px; height: auto; aspect-ratio: 520/340; }
+    .paper { font-size: 16px; padding: 20px; }
+    .paper h2 { font-size: 24px; }
+
+    .photos {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        justify-items: center;
+    }
+
+    .photos.moments .photo:nth-child(3) {
+        grid-column: 1 / -1;
+        justify-self: center;
+        max-width: 50%;
+    }
+    .photo {
+        aspect-ratio: 1 / 1;
+        width: 100%;
+        border-radius: 20px;
+    }
+    .photo:hover { transform: none; }
+    .photo:hover img { transform: none; }
+    
+
+    .photo {
+        aspect-ratio: 1 / 1;
+        width: 100%; /* Это важно! */
+        border-radius: 20px;
+    }
+    .photo:hover { transform: none; } /* На телефонах нет эффекта наведения, убираем дрыганье */
+    .photo:hover img { transform: none; }
+    
+
+    .gallery { gap: 30px; }
+    .gallery h2 { font-size: 36px; margin-top: 10px; }
+    .gallery2 h2 { font-size: 36px; }
+    
+
+    .reasonsGrid { grid-template-columns: 1fr; } /* На телефоне в одну колонку */
+    
+
+    .finalWords { padding: 30px 20px; width: 90%; }
+    .finalWords h1 { font-size: 48px !important; }
+    .finalWords p { font-size: 20px !important; }
+    .finalWords span { font-size: 22px !important; }
+}
+
+
+@media(max-width: 500px) {
+    .photos {
+        grid-template-columns: 1fr 1fr; /* Жестко держим 2 колонки */
+        gap: 10px;
+    }
+    .photo { border-radius: 16px; }
+    .hero h1 { font-size: 34px; }
+    .glass h2 { font-size: 28px; }
+    .reasonsSection h2 { font-size: 28px; }
+    .counter span { font-size: 28px; }
+}
+
